@@ -27,7 +27,7 @@ module.exports = function(app){
     //Api POST request, when user submits note/ data to server
 
     app.post("/api/notes", function(req,res){
-        console.log("post started");
+        console.log("post route started");
         //read JSON file
         fs.readFile("./data/db.json", "utf-8", (err, data)=>{
             //convert to JSON
@@ -49,9 +49,10 @@ module.exports = function(app){
                 console.log("note saved", noteArr);
             })
         })
-    })
+    });
 
     //delete a specific note by id
+
     app.delete("api/notes/:id", (req, res)=> {
 
         let noteID = req.params.id;
@@ -64,11 +65,16 @@ module.exports = function(app){
             const noteArr = JSON.parse(data);
             let newArr = noteArr.filter(note=>note.id !=noteID);
 
-            fs.writeFile(",/data.db.json", JSON.stringify(newArr, null, 2), err => {
+            fs.writeFile("./data.db.json", JSON.stringify(newArr, noteFile), (err, data) => {
                 if(err) throw err;
+
                 res.json(noteFile);
-                console.log("note was delted", noteID);
+                console.log("note was deleted", noteID);
             })
         })
     })
+   
+
+
+    
 }

@@ -38,7 +38,7 @@ module.exports = function(app){
                 noteArr[i].id = i + 1
               }
 
-            let currentLength = noteArr[noteArr.length-1].id;
+            let currentLength = noteArr[noteArr.length];
             // add one for the new Id
             let newID = currentLength +1;
             //append new note

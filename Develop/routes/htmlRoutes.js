@@ -8,7 +8,7 @@ module.exports = function(app){
     
     });
     // everything else responds with index.html
-    app.get("/home",(req, res)=>{
+    app.get("*",(req, res)=>{
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 };

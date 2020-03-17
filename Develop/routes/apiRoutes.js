@@ -30,9 +30,14 @@ module.exports = function(app){
         console.log("post route started");
         //read JSON file
         fs.readFile("./data/db.json", "utf-8", (err, data)=>{
+            if (err) throw err;
             //convert to JSON
             let noteArr = JSON.parse(data);
             // add ID
+            for (let i = 0; i < noteArr.length; i++) {
+                noteArr[i].id = i + 1
+              }
+
             let currentLength = noteArr[noteArr.length-1].id;
             // add one for the new Id
             let newID = currentLength +1;
@@ -52,8 +57,7 @@ module.exports = function(app){
     });
 
     //delete a specific note by id
-
-    app.delete("api/notes/:id", (req, res)=> {
+    app.delete("/api/notes/:id/", (req, res)=> {
 
         let noteID = req.params.id;
         console.log("delete runs", noteID);
@@ -63,18 +67,19 @@ module.exports = function(app){
             if (err) throw err;
 
             const noteArr = JSON.parse(data);
-            let newArr = noteArr.filter(note=>note.id !=noteID);
+            let newArr = noteArr.filter(note=> {
+                return note.id != noteID;
+            });
+         
+              console.log(newArr);
 
-            fs.writeFile("./data.db.json", JSON.stringify(newArr, noteFile), (err, data) => {
+            fs.writeFile("./data/db.json", JSON.stringify(newArr, null, 2), (err, data) => {
                 if(err) throw err;
 
-                res.json(noteFile);
+                res.json(true);
                 console.log("note was deleted", noteID);
             })
         })
     })
-   
-
-
     
 }

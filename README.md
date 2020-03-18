@@ -1,5 +1,7 @@
 # Note-Taker with Express
 
+Link to deployed <a href="https://steffield-note-taker.herokuapp.com/">Note-Taker heroku application</a>.
+
 ## Description
 
 This is an application that can be used to write, save, and delete notes. This application uses an express backend and saves and retrieves note data from a JSON file.
@@ -22,7 +24,7 @@ The application has a db.json file on the backend that stores retrieves notes us
 
 ## Installation
 
- Install the necessary dependencies by running the following command:
+Install the necessary dependencies by running the following command:
 
 `npm i`
 

@@ -14,12 +14,6 @@ The application has a db.json file on the backend that stores retrieves notes us
 
 *[Usage](#usage)
 
-*[Credits](#credits)
-
-*[License](#license)
-
-*[Tests](#tests)
-
 *[Contribution](#contribution)
 
 ## Installation
